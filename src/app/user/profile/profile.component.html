@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-5">
+    <div class="row">
+      <div class="col-5">
+        <div class="card" style="height: 100%">
+          <img style="height: 100%" [src]="userData.imagePath" class="card-img-top" [alt]="userData.fullName"/>
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="card userCard">
+          <div class="card-body">
+            <h5 class="card-title">{{ userData.fullName }}</h5>
+            <p class="small">username - {{ userData.username }}</p>
+            <p class="small">email - {{ userData.emailId }}</p>
+            <p class="small">creation date - {{ userData.createdDate }}</p>
+            <button class="btn btn-primary" (click)="editUserInfo()">Edit Informaton</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="btn-group mb-2" role="group" aria-label="Basic radio toggle button group" style="width: 100%;">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" (change)="myPostsSelected($event)" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btnradio1">My Posts</label>
+          <input type="radio" class="btn-check" name="btnradio" (change)="likedPostsSelected($event)" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio2">Liked Posts</label>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" (change)="commentedPostsSelected($event)" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio3">Commented Posts</label>
+        </div>
+        <app-recipe-item *ngFor="let recipeItem of displayData; let i = index" [recipe]="recipeItem" [index]="i"></app-recipe-item>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="card" style="width: 18rem;">
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="review" class="form-label">Add a review...</label>
+      <textarea class="form-control" id="review" formControlName="review" rows="3"></textarea>
+    </div>
+  </form>
+
+  <div *ngFor="let comment of comments">
+    <div class="card-header">Added by {{ comment.userId }}</div>
+    <div class="card-body">
+      <h5 class="card-title">
+        <span *ngFor="let star of getStars(comment.rating)" style="color: gold;">&#9733;</span>
+      </h5>
+      <p class="card-text">{{ comment.review }}</p>
+      <button class="btn btn-sm btn-danger">Delete</button>
+    </div>
+  </div>
+</div>

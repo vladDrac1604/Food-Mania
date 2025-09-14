@@ -1,0 +1,46 @@
+<div class="row mt-5">
+  <div class="col-6 offset-3 mt-2">
+    <div class="card mb-3">
+     <div class="row g-0">
+      <div class="col-md-6">
+       <img src="{{displayImagePath}}" class="img-fluid rounded-start" alt="a random dish's image">
+      </div>
+      <div class="col-md-6 outerDiv">
+      <div class="card-body">
+        <div class="text-center mb-5">
+          <h4 class="card-title">Login Form</h4>
+        </div>
+        <form class="form-floating" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="username" placeholder="JonDoe@123" formControlName="username" autocomplete="off">
+            <label for="username">username</label>
+          </div>
+          <div class="form-floating mb-2">
+            <input [type]="showPassword ? 'text' : 'password'"
+            class="form-control" id="passwordInput" placeholder="Password" formControlName="password" autocomplete="off">
+            <label for="passwordInput">password</label>
+          </div>
+          <div class="form-check mb-3">
+            <input id="showPasswordCheckBox" (change)="showPasswordCheck($event)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">show password</label>
+          </div>
+
+          <div class="text-center mb-5">
+            <span> <a href="">Forgot password ?</a> </span>
+          </div>
+
+          <div class="text-center mb-0">
+            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary px-4 py-1 mx-1">Submit</button>
+            <button type="button" (click)="resetForm()" class="btn btn-danger px-4 py-1 mx-1">Reset</button>
+          </div>
+        </form>
+      </div>
+      </div>
+     </div>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Don't have an account ? Go to <a routerLink="/registrationForm">Sign in</a>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+.active{
+  background-color: rgb(29, 233, 233);
+}
+
+#logout-link :hover {
+  cursor: pointer;
+}

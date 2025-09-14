@@ -1,0 +1,47 @@
+<div class="row mt-5">
+  <div class="col-6 offset-3 mt-1">
+    <div class="card mb-3">
+     <div class="row g-0">
+      <div class="col-md-6">
+       <img src="{{displayImagePath}}" class="img-fluid rounded-start" alt="..." style="height:100%">
+      </div>
+      <div class="col-md-6 outerDiv">
+      <div class="card-body">
+        <div class="text-center mb-3">
+          <h4 class="card-title">Registration Form</h4>
+        </div>
+        <form class="form-floating" [formGroup]="regiterForm" (ngSubmit)="submitForm()">
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="name" placeholder="John Doe" formControlName="fullName" autocomplete="off">
+            <label for="name">full name</label>
+          </div>
+          <div class="form-floating mb-2">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="emailAddress" autocomplete="off">
+            <label for="floatingInput">email address</label>
+          </div>
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="username" placeholder="JonDoe@123" formControlName="username" autocomplete="off">
+            <label for="username">username</label>
+          </div>
+          <div class="form-floating mb-2">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" autocomplete="off">
+            <label for="floatingPassword">password</label>
+          </div>
+          <div class="mb-3">
+            <input id="profilePicInput" class="form-control py-1" type="file" id="formFile" (change)="onImagePicked($event)">
+          </div>
+          <div class="text-center custom-file">
+            <button type="submit" [disabled]="!regiterForm.valid" class="btn btn-primary px-4 py-1 mx-1">Submit</button>
+            <button type="button" (click)="resetForm()" class="btn btn-danger px-4 py-1 mx-1">Reset</button>
+          </div>
+        </form>
+      </div>
+      </div>
+     </div>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Already have an account ? Go to <a routerLink="/login">Log in</a>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>

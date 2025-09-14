@@ -1,0 +1,38 @@
+<div class="row mt-5">
+  <div class="col-12">
+    <div class="card bg-info text-dark">
+      <img src="{{dish.imagePath}}" class="card-img-top" style="height: 550px" alt="...">
+      <div class="card-body">
+        <h2 class="card-title">{{dish.name}}
+          <span class="likesSpan">
+            <i *ngIf="loggedInUserId && dish.likes.includes(loggedInUserId)" class="fas fa-heart" style="color: rgb(231, 34, 34)" (click)="onLikeClicked()"></i>
+            <i *ngIf="(loggedInUserId && !dish.likes.includes(loggedInUserId)) || (!loggedInUserId)" class="fas fa-heart" (click)="onLikeClicked()"></i>
+            {{dish.likes.length}}
+          </span>
+        </h2>
+        <p class="card-text">{{dish.description}}</p>
+      </div>
+      <ul class="list-group list-group-flush mx-3 mt-0 rounded">
+        <div class="dropdown">
+          <button style="width: 100%" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            List of ingredients
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a *ngFor="let ing of dish.ing" class="dropdown-item">{{ing.ingName}} - {{ing.amount}}</a>
+          </div>
+        </div>
+      </ul>
+      <div class="card-footer px-3">
+        <div  style="width: 100%;" aria-label="Basic example">
+          <button style="width: 33%" type="button" (click)="openCommentsPopup()" class="btn btn-secondary">Comments</button>
+          <button [disabled]="hideActionButtons(dish.creatorId)" style="width: 33%; margin-right: 3px; margin-left: 3px" type="button"
+            (click)="onEditRecipe()" class="btn btn-warning">Edit recipe
+          </button>
+          <button [disabled]="hideActionButtons(dish.creatorId)" style="width: 33%" type="button" class="btn btn-danger" (click)="onDeleteRecipe(dish)">
+            Delete recipe
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

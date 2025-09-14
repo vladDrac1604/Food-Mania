@@ -1,0 +1,26 @@
+li {
+  transition: 0.5s ease-in-out;
+}
+
+li:hover {
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+
+ul {
+  border-bottom: 0ch;
+}
+
+.likesSpan {
+  font-size: 23px;
+  float: right
+}
+
+i {
+ transition: transform 0.3s ease, background-color 0.3s ease;
+ font-size: 23px;
+}
+i:hover {
+  cursor: pointer;
+  transform: translateY(-3px);
+}

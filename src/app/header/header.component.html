@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg bg-light mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Food Mania</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLinkActive="active" routerLink="/recipes">Dashboard</a>
+        <a *ngIf="!isAuthenticated" class="nav-link" routerLinkActive="active" routerLink="/registrationForm">Sign In</a>
+      </div>
+      <div class="navbar-nav" style="margin-left: auto;">
+        <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active" (click)="goToProfile()"><i class="fa fa-user" style="font-size: 25px"></i></a>
+        <a *ngIf="!isAuthenticated" class="nav-link" routerLinkActive="active" routerLink="/login">Log In</a>
+        <button *ngIf="isAuthenticated" class="btn btn-info mx-1" (click)="logout()">Log Out</button>
+      </div>
+    </div>
+  </div>
+</nav>

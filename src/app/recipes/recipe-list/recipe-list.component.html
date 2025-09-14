@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-4">
+    <button [disabled]="!isAuthenticated" class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
+  </div>
+  <div class="col-8">
+    <form class="d-flex" role="search" [formGroup]="searchForm">
+      <div class="input-group mx-1">
+        <input
+          class="form-control me-2"
+          required
+          formControlName="dish"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-success"
+            [disabled]="!searchForm.valid"
+            (click)="searchDishByInput()"
+            type="submit"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+      <button
+        class="btn btn-outline-secondary"
+        *ngIf="refreshBtnVisible"
+        (click)="refresh()"
+        type="button"
+      >
+        &#x27F3;
+      </button>
+    </form>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-12">
+    <app-recipe-item
+      *ngFor="let recipeItem of recipes; let i = index"
+      [recipe]="recipeItem"
+      [index]="i"
+    ></app-recipe-item>
+  </div>
+</div>
+<div class="row mt-1">
+  <div class="col-12">
+    <div class="btn-group" style="width: 100%" role="group" aria-label="Basic example">
+      <button [disabled]="!(nextIndex > 2)" (click)="callGetDishesApi(1, pageSize)"
+        type="button" class="btn btn-outline-secondary">
+        First
+      </button>
+      <button [disabled]="!(previousIndex > 0)" (click)="callGetDishesApi(previousIndex, pageSize)"
+        type="button" class="btn btn-outline-secondary">
+        Previous
+      </button>
+      <button [disabled]="!(nextIndex <= numberOfPages)" (click)="callGetDishesApi(nextIndex, pageSize)"
+        type="button" class="btn btn-outline-secondary">
+        Next
+      </button>
+      <button [disabled]="(nextIndex > numberOfPages)" (click)="callGetDishesApi(numberOfPages, pageSize)"
+        type="button" class="btn btn-outline-secondary">
+        Last
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="card mb-1 bg-info text-dark">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{recipe.imagePath}}" class="img-fluid rounded-start" alt="..." style="height: 100%;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{recipe.name}}
+          <span *ngIf="recipe.type == 'veg'" class="veg-badge-container">
+            <span class="circle"></span>
+          </span>
+          <span *ngIf="recipe.type == 'non-veg'"  class="non-veg-badge-container">
+            <span class="triangle"></span>
+          </span>
+        </h5>
+        <p class="card-text">{{recipe.description.substring(0, 100)}}...</p>
+      </div>
+      <div style="margin-top: auto">
+        <a class="btn btn-danger" [routerLink]="[recipe.id]">show Details</a>
+      </div>
+    </div>
+  </div>
+</div>

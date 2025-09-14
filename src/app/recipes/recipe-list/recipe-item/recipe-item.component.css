@@ -1,0 +1,41 @@
+a {
+  width: 100%;
+}
+
+.non-veg-badge-container {
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e43b4f;
+  height: 20px;
+  width: 20px;
+}
+
+.triangle {
+  position: absolute;
+	width: 0;
+	height: 0;
+  border-radius: 2px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 10px solid #e43b4f;
+}
+
+.veg-badge-container {
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid green;
+  height: 20px;
+  width: 20px;
+}
+
+.circle {
+  position: absolute;
+  background-color: green;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}

@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-12">
+    <form autocomplete="off" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-2">
+        <div class="col-12">
+          <button class="btn btn-primary px-3" type="submit" [disabled]="!recipeForm.valid">Save</button>
+          <button class="btn btn-danger px-3 mx-1" type="button" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-floating mb-2">
+            <input type="text" formControlName="name" class="form-control" id="name" placeholder="name of the recipe">
+            <label for="name">Name</label>
+          </div>
+          <div class="form-check">
+            <input (change)="dishTypeChanged($event)" class="form-check-input" type="radio" name="radioDefault" value="veg" id="vegRadioBtn" checked>
+            <label class="form-check-label" for="vegRadioBtn">Veg</label>
+          </div>
+          <div class="form-check mb-1">
+            <input (change)="dishTypeChanged($event)" class="form-check-input" type="radio" name="radioDefault" value="nonveg" id="nonvegRadioBtn">
+            <label class="form-check-label" for="nonvegRadioBtn">Non-Veg</label>
+          </div>
+          <div class="form-floating mb-2">
+            <button class="btn btn-secondary px-3" type="button" (click)="filepicker.click()">
+              <span *ngIf="!editMode">Pick Image</span>
+              <span *ngIf="editMode">Change Image</span>
+            </button>
+            <input type="file" style="display: none;" #filepicker (change)="onImagePicked($event)">
+          </div>
+        </div>
+      </div>
+      <div class="row my-1" *ngIf="imagePreview && imagePreview !== ''">
+        <div class="col-12">
+          <img [src]="imagePreview" style="width: 100%;" class="img-fluid img-responsive">
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-12">
+          <div class="form-floating">
+            <textarea formControlName="description" class="form-control" placeholder="description" id="desc" style="height: 100px;"></textarea>
+            <label for="desc">Description</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" formArrayName="ingredients">
+          <div class="row mb-1" *ngFor="let temp of controls; let i = index"
+          [formGroupName]="i">
+            <div class="col-9">
+              <input type="text" class="form-control" formControlName="ingName">
+            </div>
+            <div class="col-2">
+              <input type="number" class="form-control" formControlName="amount">
+            </div>
+            <div class="col-1">
+              <button type="button" class="btn btn-danger px-3" (click)="onRemoveIngredient(controls[i])">X</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mt-1">
+          <button type="button" style="width: 100%;" class="btn btn-success" (click)="onAddIngredient()">Add Ingredient</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
